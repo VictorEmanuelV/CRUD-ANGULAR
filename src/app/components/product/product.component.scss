@@ -1,0 +1,140 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.app-header, .app-footer {
+  background-color: #1e90ff;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #1e90ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  input, button {
+    padding: 10px 15px;
+    border: 1px solid #1e90ff;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  input {
+    flex-grow: 1;
+    min-width: 150px;
+  }
+
+  button {
+    background-color: #1e90ff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0077cc;
+    }
+  }
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.product-table th, .product-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.product-table th {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.product-table button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+
+  &:hover {
+    background-color: #0077cc;
+  }
+}
+
+.edit-product-form {
+  background-color: #e6f7ff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+
+  h3 {
+    color: #1e90ff;
+    margin-bottom: 10px;
+  }
+
+  input, button {
+    padding: 10px 15px;
+    border: 1px solid #1e90ff;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    background-color: #1e90ff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0077cc;
+    }
+  }
+}
+

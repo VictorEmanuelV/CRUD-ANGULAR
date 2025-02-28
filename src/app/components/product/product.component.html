@@ -1,0 +1,81 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>Gerenciador de Produtos</h1>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <h2>Produtos</h2>
+
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <div class="form-group">
+          <input formControlName="nomeDoProduto" placeholder="Nome do Produto">
+          <div *ngIf="productForm.get('nomeDoProduto')?.invalid && (productForm.get('nomeDoProduto')?.dirty || productForm.get('nomeDoProduto')?.touched)" class="error-message">
+            <div *ngIf="productForm.get('nomeDoProduto')?.errors?.['required']">Nome é obrigatório.</div>
+            <div *ngIf="productForm.get('nomeDoProduto')?.errors?.['maxlength']">Máximo de 20 caracteres.</div>
+          </div>
+
+          <input formControlName="descricaoDoProduto" placeholder="Descrição">
+          <div *ngIf="productForm.get('descricaoDoProduto')?.invalid && (productForm.get('descricaoDoProduto')?.dirty || productForm.get('descricaoDoProduto')?.touched)" class="error-message">
+            <div *ngIf="productForm.get('descricaoDoProduto')?.errors?.['required']">Descrição é obrigatória.</div>
+            <div *ngIf="productForm.get('descricaoDoProduto')?.errors?.['maxlength']">Máximo de 50 caracteres.</div>
+          </div>
+
+          <input formControlName="codigo" placeholder="Código">
+          <div *ngIf="productForm.get('codigo')?.invalid && (productForm.get('codigo')?.dirty || productForm.get('codigo')?.touched)" class="error-message">
+            <div *ngIf="productForm.get('codigo')?.errors?.['required']">Código é obrigatório.</div>
+            <div *ngIf="productForm.get('codigo')?.errors?.['maxlength']">Máximo de 10 caracteres.</div>
+          </div>
+
+          <input type="number" formControlName="quantidade" placeholder="Quantidade">
+          <div *ngIf="productForm.get('quantidade')?.invalid && (productForm.get('quantidade')?.dirty || productForm.get('quantidade')?.touched)" class="error-message">
+            <div *ngIf="productForm.get('quantidade')?.errors?.['required']">Quantidade é obrigatória.</div>
+            <div *ngIf="productForm.get('quantidade')?.errors?.['min']">Quantidade deve ser maior ou igual a 0.</div>
+          </div>
+
+          <button type="submit" [disabled]="productForm.invalid">Adicionar</button>
+        </div>
+      </form>
+
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Código</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.nomeDoProduto }}</td>
+            <td>{{ product.descricaoDoProduto }}</td>
+            <td>{{ product.codigo }}</td>
+            <td>{{ product.quantidade }}</td>
+            <td>
+              <button (click)="startEditing(product)">Editar</button>
+              <button (click)="deleteProduct(product.id)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="editingProduct" class="edit-product-form">
+        <h3>Editar Produto</h3>
+        <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+          <input formControlName="nomeDoProduto">
+          <input formControlName="descricaoDoProduto">
+          <input formControlName="codigo">
+          <input type="number" formControlName="quantidade">
+          <button type="submit" [disabled]="productForm.invalid">Salvar</button>
+          <button type="button" (click)="cancelEdit()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; {{ currentYear }} Gerenciador de Produtos</p>
+  </footer>
+</div>
